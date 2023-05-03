@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище RaspisanieGeneratorModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HourCount" Type="int" Nullable="false" />
+          <Property Name="ClassID" Type="int" Nullable="false" />
+          <Property Name="ClassRoomID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RaspisanieYrokov">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LessonNumber" Type="int" Nullable="false" />
+          <Property Name="LessonDate" Type="date" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Items__ClassID__36B12243">
+          <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__ClassRoom__37A5467C">
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ClassRoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Raspisani__ItemI__38996AB5">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="RaspisanieYrokov" Type="Self.RaspisanieYrokov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RaspisanieYrokov">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище RaspisanieGeneratorModelContainer">
+          <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassRoom" EntityType="Self.ClassRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RaspisanieYrokov" EntityType="Self.RaspisanieYrokov" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Items__ClassID__36B12243" Association="Self.FK__Items__ClassID__36B12243">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__ClassRoom__37A5467C" Association="Self.FK__Items__ClassRoom__37A5467C">
+            <End Role="ClassRoom" EntitySet="ClassRoom" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Raspisani__ItemI__38996AB5" Association="Self.FK__Raspisani__ItemI__38996AB5">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="RaspisanieYrokov" EntitySet="RaspisanieYrokov" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RaspisanieGeneratorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="RaspisanieGeneratorModel.Classes" />
+          <EntitySet Name="ClassRoom" EntityType="RaspisanieGeneratorModel.ClassRoom" />
+          <EntitySet Name="Items" EntityType="RaspisanieGeneratorModel.Items" />
+          <EntitySet Name="RaspisanieYrokov" EntityType="RaspisanieGeneratorModel.RaspisanieYrokov" />
+          <AssociationSet Name="FK__Items__ClassID__36B12243" Association="RaspisanieGeneratorModel.FK__Items__ClassID__36B12243">
+            <End Role="Classes" EntitySet="Classes" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__ClassRoom__37A5467C" Association="RaspisanieGeneratorModel.FK__Items__ClassRoom__37A5467C">
+            <End Role="ClassRoom" EntitySet="ClassRoom" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Raspisani__ItemI__38996AB5" Association="RaspisanieGeneratorModel.FK__Raspisani__ItemI__38996AB5">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="RaspisanieYrokov" EntitySet="RaspisanieYrokov" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Items" Relationship="RaspisanieGeneratorModel.FK__Items__ClassID__36B12243" FromRole="Classes" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="ClassRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Items" Relationship="RaspisanieGeneratorModel.FK__Items__ClassRoom__37A5467C" FromRole="ClassRoom" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HourCount" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ClassRoomID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="RaspisanieGeneratorModel.FK__Items__ClassID__36B12243" FromRole="Items" ToRole="Classes" />
+          <NavigationProperty Name="ClassRoom" Relationship="RaspisanieGeneratorModel.FK__Items__ClassRoom__37A5467C" FromRole="Items" ToRole="ClassRoom" />
+          <NavigationProperty Name="RaspisanieYrokov" Relationship="RaspisanieGeneratorModel.FK__Raspisani__ItemI__38996AB5" FromRole="Items" ToRole="RaspisanieYrokov" />
+        </EntityType>
+        <EntityType Name="RaspisanieYrokov">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LessonNumber" Type="Int32" Nullable="false" />
+          <Property Name="LessonDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="RaspisanieGeneratorModel.FK__Raspisani__ItemI__38996AB5" FromRole="RaspisanieYrokov" ToRole="Items" />
+        </EntityType>
+        <Association Name="FK__Items__ClassID__36B12243">
+          <End Type="RaspisanieGeneratorModel.Classes" Role="Classes" Multiplicity="1" />
+          <End Type="RaspisanieGeneratorModel.Items" Role="Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__ClassRoom__37A5467C">
+          <End Type="RaspisanieGeneratorModel.ClassRoom" Role="ClassRoom" Multiplicity="1" />
+          <End Type="RaspisanieGeneratorModel.Items" Role="Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="ClassRoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Raspisani__ItemI__38996AB5">
+          <End Type="RaspisanieGeneratorModel.Items" Role="Items" Multiplicity="1" />
+          <End Type="RaspisanieGeneratorModel.RaspisanieYrokov" Role="RaspisanieYrokov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RaspisanieYrokov">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RaspisanieGeneratorModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="RaspisanieGeneratorModel.Classes">
+              <MappingFragment StoreEntitySet="Classes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassRoom">
+            <EntityTypeMapping TypeName="RaspisanieGeneratorModel.ClassRoom">
+              <MappingFragment StoreEntitySet="ClassRoom">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="RaspisanieGeneratorModel.Items">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ClassRoomID" ColumnName="ClassRoomID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="HourCount" ColumnName="HourCount" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RaspisanieYrokov">
+            <EntityTypeMapping TypeName="RaspisanieGeneratorModel.RaspisanieYrokov">
+              <MappingFragment StoreEntitySet="RaspisanieYrokov">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="LessonDate" ColumnName="LessonDate" />
+                <ScalarProperty Name="LessonNumber" ColumnName="LessonNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

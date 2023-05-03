@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0a893f5974c94fe19f77608e1bc08af8" Name="Diagram1">
+        <EntityTypeShape EntityType="RaspisanieGeneratorModel.Classes" Width="1.5" PointX="0.5" PointY="3" />
+        <EntityTypeShape EntityType="RaspisanieGeneratorModel.ClassRoom" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="RaspisanieGeneratorModel.Items" Width="1.5" PointX="2.5" PointY="2.875" />
+        <EntityTypeShape EntityType="RaspisanieGeneratorModel.RaspisanieYrokov" Width="1.875" PointX="4.625" PointY="3.375" />
+        <AssociationConnector Association="RaspisanieGeneratorModel.FK__Items__ClassID__36B12243" />
+        <AssociationConnector Association="RaspisanieGeneratorModel.FK__Items__ClassRoom__37A5467C" />
+        <AssociationConnector Association="RaspisanieGeneratorModel.FK__Raspisani__ItemI__38996AB5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
