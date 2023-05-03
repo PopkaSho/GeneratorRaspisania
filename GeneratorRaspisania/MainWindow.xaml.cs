@@ -37,8 +37,64 @@ namespace GeneratorRaspisania
         {
             InitializeComponent();
             var raspfiveclass = entities.RaspisanieYrokov.ToList();
-            raspfiveclass = raspfiveclass.Where(p => p.Items.Classes.Id == 5).ToList();
-            GridRaspis.ItemsSource = entities.RaspisanieYrokov.ToList();
+            var maxYr = raspfiveclass.Select(i => i.LessonNumber).Max();
+            List<RasspisainModel> raspis = new List<RasspisainModel>();
+            for(int i=1; i<=maxYr ; i++) {
+                var test = new RasspisainModel();
+                for (int j = 1; j <= 11; j++ )
+                {
+                    if (j == 1)
+                    {
+                        test.OneClass = raspfiveclass.Where(k=> k.LessonNumber ==i&&k.Items.ClassID==j).FirstOrDefault();
+                    }
+                    if (j == 2)
+                    {
+                        test.TwoClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 3)
+                    {
+                        test.FreeClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 4)
+                    {
+                        test.FourClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 5)
+                    {
+                        test.FiveClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 6)
+                    {
+                        test.SixClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 7)
+                    {
+                        test.SevenClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 8)
+                    {
+                        test.EightClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 9)
+                    {
+                        test.OneClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 10)
+                    {
+                        test.NineClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                    if (j == 11)
+                    {
+                        test.TenClass = raspfiveclass.Where(k => k.LessonNumber == i && k.Items.ClassID == j).FirstOrDefault();
+                    }
+                   
+                }
+                raspis.Add(test);
+            }
+           
+          
+            GridRaspis.ItemsSource = raspis;
+         
         }
     }
 }

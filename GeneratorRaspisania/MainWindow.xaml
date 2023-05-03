@@ -18,13 +18,13 @@
         <DataGrid x:Name="GridRaspis" Grid.Row="1" SelectionMode="Single" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="5 Класс" Binding="{Binding Items.Name}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="6 Класс" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="7 Класс" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="8 Класс" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="9 Класс" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="10 Класс" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="11 Класс" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="5 Класс" Binding="{Binding FiveClass.Items.Name }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="6 Класс" Binding="{Binding SixClass.Items.Name }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="7 Класс" Binding="{Binding SevenClass.Items.Name }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="8 Класс" Binding="{Binding EightClass.Items.Name }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="9 Класс" Binding="{Binding NineClass.Items.Name }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="10 Класс" Binding="{Binding TenClass.Items.Name }" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="11 Класс" Binding="{Binding ElevenClass.Items.Name }" Width="*"></DataGridTextColumn>
 
             </DataGrid.Columns>
         </DataGrid>
